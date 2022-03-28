@@ -11,7 +11,7 @@ Let's say you're building an old-school IoT device with a bunch of services and 
 
 Another use case is AppArmor and interpreted languages. You may have a bunch of Python scripts running as "python foo.py", or "python bar.py". It's challenging to write an AppArmor profile for the python executable that'll restrict foo.py from accessing secrets intended only for bar.py. You could solve this by creating virtual environments and multiple copies of Python, but that's just not so DRY, isn’t it?
 
-For another use case, you'd like to follow some great recommendations given in [this blog post](http://https://blog.forcesunseen.com/stop-storing-secrets-in-environment-variables "this blog post") and store the your app secrets on ephemeral mounts allowing access only at the apps' initialization, so in case the app is compromised later during its runtime the attacker won't be able to fetch the secrets.
+For another use case, you'd like to follow some great recommendations given in [this blog post](http://https://blog.forcesunseen.com/stop-storing-secrets-in-environment-variables "this blog post") and store your app secrets on ephemeral mounts allowing access only at the apps' initialization, so in case the app is compromised later during its runtime the attacker won't be able to fetch the secrets.
 
 
 ### Enter SecretFS
@@ -84,7 +84,7 @@ Mounting
 
 As with any FUSE-based filesystem, there are several ways to mount SecretFS
 
-1. from the command line:
+1. From the command line:
 
         $ sudo secretfs <mountpoint> <directory containing secrets>
     e.g.
@@ -95,7 +95,7 @@ As with any FUSE-based filesystem, there are several ways to mount SecretFS
 
         $ sudo python3 /path/to/secretfs.py /mnt/secrets /opt/secrets-store/
 
-2. with the `mount.fuse` command:
+2. With the `mount.fuse` command:
 
         $ sudo mount.fuse secretfs#/mnt/secrets /opt/secrets-store/
 
@@ -103,11 +103,11 @@ As with any FUSE-based filesystem, there are several ways to mount SecretFS
 
         $ sudo mount.fuse /path/to/secretfs.py#/mnt/secrets /opt/secrets-store/
 
-   debugging:
+   Debugging:
 
         sudo python3 secretfs.py --verbose --foreground /mnt/secrets /opt/secrets-store/
 
-3. fstab entry
+3. /etc/fstab entry
 
         secretfs#/mnt/secrets /opt/secrets-store/ fuse auto 0 0
 
@@ -115,7 +115,7 @@ As with any FUSE-based filesystem, there are several ways to mount SecretFS
 
         /path/to/secretfs.py#/mnt/secrets /opt/secrets-store/ fuse auto 0 0
 
-   specifying command line options in fstab:
+   Specifying command line options in fstab:
 
         secretfs#/mnt/secrets /opt/secrets-store/ fuse --disable-ls,--verbose 0 0
 
