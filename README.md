@@ -33,13 +33,9 @@ Installation
 - Python3
 - FUSE
 
-    Ubuntu
+    Ubuntu: `sudo apt-get install fuse`
 
-        sudo apt-get install fuse
-
-    OSX Homebrew
-        
-        brew install macfuse
+    OSX Homebrew: `brew install macfuse`
 
 
 Creating ACLs
