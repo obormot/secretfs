@@ -32,10 +32,13 @@ Installation
 
 - Python3
 - FUSE
+
     Ubuntu
+
         sudo apt-get install fuse
 
     OSX Homebrew
+        
         brew install macfuse
 
 
@@ -89,6 +92,7 @@ As with any FUSE-based filesystem, there are several ways to mount SecretFS
 
         $ sudo secretfs <mountpoint> <directory containing secrets>
     e.g.
+
         $ sudo secretfs /mnt/secrets /opt/secrets-store/
 
    or more expicitly, using Python:
