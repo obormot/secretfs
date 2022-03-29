@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "secretfs"
 version = "0.1.0"
-description = "SecretFS is a security focused FUSE-based filesystem providing fine-grained access controls to application secrets in a hardened Linux, MacOS, and FreeBSD."
+description = "SecretFS is a security focused FUSE filesystem providing fine-grained access control to application secrets in a hardened Linux, MacOS, and FreeBSD."
 authors = ["Oscar Ibatullin <oscar.ibatullin@gmail.com>"]
 license = "BSD-3-Clause"
 readme = "README.md"
