@@ -113,8 +113,8 @@ Same strictness applies to the command line (`cmdline` in the ACL rule). SecretF
 When running in the terminal,` secretfs.py` would normally terminate on Ctrl-C (or Command+C), and unmount its volume, unless the resource is busy (e.g. there's an active bash shell with `cd /mnt/secrets`). In this case FUSE will silently ignore the termination request. Just cd out of the mount point and it'll unmount fine.
 
 
-SECURITY DISCLAIMER
--------------------
+DISCLAIMERS
+-----------
 
 SecretFS is an experimental project and has not been evaluated by independent security experts. Use at your own risk.
-root has full access to all secrets and can't be restricted by SecretFS.
+root has full access to all secrets and can't be restricted by SecretFS. Has not been tested on FreeBSD.
