@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-SecretFS is a security focused FUSE-based filesystem providing fine-grained
-access controls to application secrets in a hardened Linux, MacOS, and FreeBSD.
+SecretFS is a security focused FUSE filesystem providing fine-grained
+access control to application secrets in a hardened Linux, MacOS, and FreeBSD.
 
 Requirements:
 - FUSE
@@ -25,7 +25,6 @@ from fuse import FUSE, FuseOSError, LoggingMixIn, Operations, fuse_get_context
 import psutil
 
 # constants
-#CONF_FILE = '/home/vagrant/secretfs/secretfs-root.conf'  # XXX - dev
 CONF_FILE = '/etc/secretfs.conf'  # ACL configuration file
 LOG_FILE = '/var/log/secretfs.log'
 
@@ -254,8 +253,8 @@ def load_acl_rules(conf, fuse_root):
 
 def main():
     ap = ArgumentParser()
-    ap.add_argument('dev', help='mount point')
-    ap.add_argument('root', help='fuse root path (directory containing secrets)')
+    ap.add_argument('MOUNTDIR', help='mount point')
+    ap.add_argument('SOURCEDIR', help='source directory containing secrets')
     ap.add_argument('--verbose', action='store_true', help='enable verbose logging')
     ap.add_argument('--foreground', action='store_true', help='run in foreground and log to stdout')
     ap.add_argument('--disable-ls', action='store_true', help='disable directory listing for extra security')
@@ -275,20 +274,20 @@ def main():
     logging.basicConfig(level=log_level, format="%(asctime)s %(message)s", **log_kwargs)
 
     conf = load_configuration()
-    load_acl_rules(conf, args.root)
+    load_acl_rules(conf, args.SOURCEDIR)
 
-    logging.info(f"Starting up SecretFS, mount point: {args.dev}, secrets root: {args.root}")
+    logging.info(f"Starting up SecretFS, mount point: {args.MOUNTDIR}, secrets root: {args.SOURCEDIR}")
     logging.debug(f"args: {vars(args)}, opts: {opts}")
 
     # create the mountpoint if needed
     try:
-        os.mkdir(args.dev)
+        os.mkdir(args.MOUNTDIR)
     except OSError:
         pass
 
     FUSE(
-        SecretFS(args.root, args.disable_ls),
-        args.dev,
+        SecretFS(args.SOURCEDIR, args.disable_ls),
+        args.MOUNTDIR,
         nothreads=True,   # run single-threaded to prevent race conditions
         foreground=args.foreground,
         allow_other=True,  # allow other(=all) users to access the file system
