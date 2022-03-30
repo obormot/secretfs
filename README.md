@@ -113,3 +113,8 @@ DISCLAIMER
 
 SecretFS is an experimental project and has not been evaluated by independent security experts. Use at your own risk.
 root has full access to all secrets and can't be restricted by SecretFS. Has not been tested on FreeBSD.
+
+
+DEMO
+----
+![SecretFS gif demo](demo/ascii-demo.gif)
