@@ -8,6 +8,7 @@ readme = "README.md"
 homepage = "https://github.com/obormot/secretfs"
 repository = "https://github.com/obormot/secretfs"
 keywords = ["security", "secrets", "fuse", "filesystem"]
+exclude = ["secretfs/demo/*"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
