@@ -7,8 +7,17 @@ license = "BSD-3-Clause"
 readme = "README.md"
 homepage = "https://github.com/obormot/secretfs"
 repository = "https://github.com/obormot/secretfs"
-keywords = ["security", "secrets", "fuse", "filesystem"]
 exclude = ["secretfs/demo/*"]
+
+keywords = ["security", "secrets", "fuse", "filesystem"]
+classifiers = [
+    "Environment :: Console",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: POSIX :: BSD :: FreeBSD",
+    "Topic :: System :: Filesystems",
+    "Topic :: Security"
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
