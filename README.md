@@ -25,11 +25,6 @@ Installation
 ACLs are defined in `/etc/secretfs.conf` as follows:
 
 ```
-# SecretFS configuration file
-# /etc/secretfs.conf
-
-# ACLs
-
 # [rule_id] - any id or name of the ACL rule; must be unique
 #   path    - path to the the secret, relative to the root directory specified at mount time
 #   process - full path to the process requesting access
@@ -76,7 +71,7 @@ As with any FUSE-based filesystem, there are several ways to mount SecretFS
 
         $ sudo python3 /path/to/secretfs.py /mnt/secrets /opt/secrets-store/
 
-2. With the `mount.fuse` command:
+2. With `mount.fuse` command:
 
         $ sudo mount.fuse secretfs#/mnt/secrets /opt/secrets-store/
 
@@ -88,7 +83,7 @@ As with any FUSE-based filesystem, there are several ways to mount SecretFS
 
         sudo python3 secretfs.py --verbose --foreground /mnt/secrets /opt/secrets-store/
 
-3. /etc/fstab entry
+3. `/etc/fstab` entry
 
         secretfs#/mnt/secrets /opt/secrets-store/ fuse auto 0 0
 
@@ -110,11 +105,11 @@ Note that catching the process path for the ACL can be non-intuitive. One may be
 
 Same strictness applies to the command line (`cmdline` in the ACL rule). SecretFS will distinguish between `cat secret.txt` and `cat ./secret.txt`.
 
-When running in the terminal,` secretfs.py` would normally terminate on Ctrl-C (or Command+C), and unmount its volume, unless the resource is busy (e.g. there's an active bash shell with `cd /mnt/secrets`). In this case FUSE will silently ignore the termination request. Just cd out of the mount point and it'll unmount fine.
+When running in the terminal, `secretfs.py` would normally terminate on Ctrl-C (or Command+C), and unmount its volume, unless the resource is busy (e.g. there's an active bash shell with `cd /mnt/secrets`). In this case FUSE will silently ignore the termination request. Just cd out of the mount point directory and it should unmount fine.
 
 
-DISCLAIMERS
------------
+DISCLAIMER
+----------
 
 SecretFS is an experimental project and has not been evaluated by independent security experts. Use at your own risk.
 root has full access to all secrets and can't be restricted by SecretFS. Has not been tested on FreeBSD.
