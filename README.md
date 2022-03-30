@@ -3,6 +3,8 @@ SecretFS is a security focused FUSE filesystem providing fine-grained access con
 
 SecretFS ACLs can restrict access to a specific process, running with a specific command line, as a specific user and/or group, and optionally within a defined time limit. It enables security practices highlighted in [this blog post](http://https://blog.forcesunseen.com/stop-storing-secrets-in-environment-variables "this blog post"), which recommends storing your app secrets on ephemeral mounts allowing access only at the apps' initialization, so in case the app is compromised later during its runtime the attacker won't be able to fetch the secrets.
 
+Additionally SecretFS can prohibit listing the directory and hide the contents of the shadow volume using the --disable-ls option.
+
 
 Installation
 ------------
