@@ -119,4 +119,6 @@ root has full access to all secrets and can't be restricted by SecretFS. Has not
 
 DEMO
 ----
+(See demo/ascii-demo.gif or view it on GitHub)
+
 ![SecretFS gif demo](demo/ascii-demo.gif)
